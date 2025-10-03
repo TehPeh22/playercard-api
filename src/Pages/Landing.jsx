@@ -14,7 +14,7 @@ const Landing = () => {
             const response = await fetch(`${process.env.REACT_APP_VALORANT_API_URL}/playercards`)
             // Extract the JSON data
             const data = await response.json()
-            // Extrand and shuffeled the cards array
+            // Extract and shuffeled the cards array
             const shuffeled = data.data.sort(() => .5 - Math.random())
             const selected = shuffeled.slice(0, 5)
             setRandomCards(selected)
@@ -30,6 +30,7 @@ const Landing = () => {
     }
 
     return (
+        // Template literals: allow embedding eaxpressions inside string
         <div className={`landing-container ${fadeIn ? 'fade-in' : ''}`}>
             <div className="landing-slider">
                 {randomCards.map((card, index) => (

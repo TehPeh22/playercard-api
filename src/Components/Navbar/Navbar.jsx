@@ -1,9 +1,17 @@
 import React from 'react' 
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../Context/AuthContext'
 
 const Navbar = () => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+    // const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+    const { isAuthenticated, logout } = useAuth()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+    }
 
     return (
         <div className='navbar'>
@@ -11,7 +19,12 @@ const Navbar = () => {
                 <img src='#'></img>
             </div>
             <ul className='nav-menu'>
-                <li><Link to='/'>Home</Link></li>
+                {
+                    !isAuthenticated && (
+                        <li><Link to='/'>Home</Link></li>
+                    )
+                }
+
                 {
                     isAuthenticated && (
                         <>
@@ -25,11 +38,10 @@ const Navbar = () => {
             <div className='nav-login'>
                 {
                     isAuthenticated ? (
-                        <button onClick={() => {
-                            localStorage.setItem('isAuthenticated', 'false')
-                            window.location.href = '/'
-                        }}>Logout</button>
-                    ) : (<Link to='/login'><button>Login</button></Link>)
+                        <button onClick={handleLogout}>Logout</button>
+                    ) : (
+                        <Link to='/login'><button>Login</button></Link>
+                    )
                 }
             </div>
         </div>
