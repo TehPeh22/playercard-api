@@ -4,11 +4,12 @@
   align-items: center;
   padding: 1rem 2rem;
   background: rgba(10, 10, 10, .4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /*blur behind navbar*/
   border-top: 4px solid rgba(0, 0, 0, .9) inset;
   position: relative;
 }
 
+/*
 .navbar::before {
   content: '';
   position: absolute;
@@ -24,6 +25,7 @@
     transparent 100%
   );
 }
+*/
 
 .logo {
   display: flex;
