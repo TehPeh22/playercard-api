@@ -6,7 +6,7 @@ import { useAuth } from "../Context/AuthContext";
 const Login = () => {
     const [fadeIn, setFadeIn] = useState(false)
     const navigate = useNavigate()
-    // Get login function from context
+    // Get login function from authcontext
     const { login } = useAuth()
 
     useEffect(() => {

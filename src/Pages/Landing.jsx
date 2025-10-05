@@ -18,7 +18,7 @@ const Landing = () => {
             const shuffeled = data.data.sort(() => .5 - Math.random())
             const selected = shuffeled.slice(0, 5)
             setRandomCards(selected)
-            // setting fade in animation when refreshing 
+            // setting fade in animation when refreshed 
             setTimeout(() => setFadeIn(true), 100)
         }
 

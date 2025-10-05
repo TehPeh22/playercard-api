@@ -19,6 +19,7 @@ const Navbar = () => {
                 <img src='#'></img>
             </div>
             <ul className='nav-menu'>
+                {/* Remove home in nav when not authenticated */}
                 {
                     !isAuthenticated && (
                         <li><Link to='/'>Home</Link></li>

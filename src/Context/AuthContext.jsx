@@ -1,7 +1,10 @@
-import { createContext, useState, useContext, Children } from "react";
-
+// createContext = share data globally
+// useState = 
+// useContext = hook to access context data
+import { createContext, useState, useContext } from "react";
 const AuthContext = createContext();
 
+// AuthProvider = entire app
 export const AuthProvider = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(
         localStorage.getItem('isAuthenticated') === 'true'
