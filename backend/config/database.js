@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 
-// Create connection to MySQL database
+// Create connection
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME
 })
 
-// Test the connection
+// Testing
 connection.connect((err) => {
     if (err) {
         console.error('Error connecting to MySQL database:', err.message)
