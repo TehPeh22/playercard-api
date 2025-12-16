@@ -3,35 +3,28 @@
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(10, 10, 10, .4);
-  backdrop-filter: blur(10px); /*blur behind navbar*/
-  border-top: 4px solid rgba(0, 0, 0, .9) inset;
-  position: relative;
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(10px);
+  border-top: 4px solid rgba(0, 0, 0, 0.9) inset;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-/*
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(147, 51, 234, 0.5) 20%, 
-    rgba(219, 39, 119, 0.5) 50%, 
-    rgba(59, 130, 246, 0.5) 80%, 
-    transparent 100%
-  );
+/* Enhanced background when scrolled */
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
-*/
 
 .logo {
   display: flex;
   font-weight: bold;
   gap: 1rem;
   align-items: center;
+  z-index: 1001;
 }
 
 .logo img {
@@ -44,6 +37,7 @@
   gap: 2rem;
   margin: 0 0 0 3rem;
   padding: 0;
+  transition: all 0.3s ease;
 }
 
 .nav-menu li {
@@ -67,6 +61,7 @@
 
 .nav-login {
   margin-left: auto;
+  z-index: 1001;
 }
 
 .nav-login button {
@@ -82,4 +77,110 @@
 
 .nav-login button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+/* =========================
+   HAMBURGER MENU
+   ========================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    margin: 0;
+    gap: 2rem;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s ease;
+    border-left: 1px solid rgba(147, 51, 234, 0.3);
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-menu li {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  /* Overlay when menu is open */
+  .nav-menu.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-menu {
+    width: 80%;
+  }
+
+  .nav-login button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }
