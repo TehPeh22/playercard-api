@@ -7,6 +7,7 @@ import Payment from './Pages/Payment';
 import Login from './Pages/Login';
 import ProtectedRoute from './Components/ProtectedRouting/Authentication';
 import { AuthProvider } from './Context/AuthContext';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/gallery' element={<ProtectedRoute><Gallery/></ProtectedRoute>}/>         
             <Route path='/payment' element={<ProtectedRoute><Payment/></ProtectedRoute>}/>
-          </Routes>    
+          </Routes>   
+          <Footer/> 
         </BrowserRouter>
       </AuthProvider>
     </div>
