@@ -190,6 +190,132 @@
     box-shadow: 0 0 15px rgba(147, 51, 234, 0.6);
 }
 
+/* Weekly Challenges Section */
+.challenges-section {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+}
+
+.challenges-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.15), transparent 60%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.challenges-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.challenges-header h3 {
+    color: #a78bfa;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.challenge-item:hover {
+    border-color: rgba(147, 51, 234, 0.4);
+    transform: translateX(3px);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+.challenge-item.completed {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.challenge-item.completed:hover {
+    border-color: rgba(34, 197, 94, 0.5);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+}
+
+.challenge-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.challenge-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.challenge-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.challenge-timer {
+    color: rgba(203, 213, 225, 0.6);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.challenge-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.challenge-status {
+    color: rgba(203, 213, 225, 0.7);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.challenge-item.completed .challenge-status {
+    color: rgba(34, 197, 94, 0.9);
+    font-weight: 600;
+}
+
+.challenge-reward {
+    color: #a78bfa;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.challenge-item.completed .challenge-reward {
+    color: rgba(34, 197, 94, 0.8);
+}
+
 /* Right Content Area */
 .gallery-content {
     flex: 1;
@@ -233,6 +359,13 @@
     }
 }
 
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Navigation Tabs */
 .gallery-nav {
     display: flex;
@@ -269,23 +402,10 @@
     box-shadow: 0 4px 20px rgba(147, 51, 234, 0.4);
 }
 
-/* Gallery Title */
-.gallery-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 30px rgba(147, 51, 234, 0.6);
-    letter-spacing: -0.5px;
-    position: relative;
-    z-index: 1;
-}
-
 /* Gallery Grid */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -293,137 +413,124 @@
     z-index: 1;
 }
 
-/* Card Item */
-.card-item {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-}
-
-.card-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 
-        0 20px 40px rgba(147, 51, 234, 0.3),
-        0 0 80px rgba(168, 85, 247, 0.2);
-    border-color: rgba(147, 51, 234, 0.4);
-}
-
-/* Card Image Container */
-.card-image-container {
-    aspect-ratio: 1;
+/* Card Container - Wrapper for card + buttons */
+.card-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, 
-        rgba(147, 51, 234, 0.15) 0%,
-        rgba(219, 39, 119, 0.15) 25%,
-        rgba(59, 130, 246, 0.15) 50%,
-        rgba(168, 85, 247, 0.15) 75%,
-        rgba(220, 38, 38, 0.15) 100%);
-    padding: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ===========================
+   CARD SLIDE - SAME AS LANDING
+   =========================== */
+.card-slide {
     position: relative;
+    width: 220px;
+    height: 320px;
+    border-radius: 15px;
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.6s ease-out forwards;
 }
 
-.card-image-container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, transparent 70%);
-    animation: rotate 25s linear infinite;
+.card-slide:hover {
+    transform: translateY(-20px) scale(1.1);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(147, 51, 234, 0.6);
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.card-image {
+.card-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-/* Card Content */
-.card-content {
-    padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.4);
+.card-slide:hover img {
+    transform: scale(1.15);
 }
 
-.card-name {
+/* Card Overlay - Same as Landing */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.card-slide:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.card-overlay h4 {
     color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 700;
 }
 
-/* Card Price Container */
-.card-price-container {
+/* Price Badge - ALWAYS VISIBLE - Top Right - No Background */
+.card-price-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
     display: flex;
     align-items: center;
+    gap: 0.3rem;
+    z-index: 2;
+}
+
+.price-icon {
+    color: #ffffff;
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.price-value {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Remove old price input styles - no longer needed */
+
+/* Card Actions - Buttons Below Card */
+.card-actions {
+    display: flex;
+    flex-direction: row;
     gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.card-price-label {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.card-price-input {
-    flex: 1;
-    padding: 0.5rem 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.card-price-input:focus {
-    outline: none;
-    border-color: rgba(147, 51, 234, 0.6);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.15);
-}
-
-.card-price-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    width: 220px;
 }
 
 /* Buy Button */
 .buy-button {
-    width: 100%;
+    flex: 1;
     padding: 0.75rem;
     background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
     color: white;
     border: none;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.9rem;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
 }
 
 .buy-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
     background: linear-gradient(135deg, rgba(147, 51, 234, 1) 0%, rgba(168, 85, 247, 1) 100%);
 }
 
@@ -432,13 +539,80 @@
 }
 
 .buy-button.owned {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.5);
+    background: rgba(34, 197, 94, 0.7);
+    color: white;
     cursor: not-allowed;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .buy-button:disabled {
-    opacity: 0.6;
+    opacity: 0.8;
+}
+
+/* Wishlist Heart Button */
+.wishlist-heart {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.wishlist-heart:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(236, 72, 153, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+.wishlist-heart.wishlisted {
+    background: rgba(236, 72, 153, 0.7);
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+    color: #ffffff;
+}
+
+.wishlist-heart.wishlisted:hover {
+    background: rgba(236, 72, 153, 0.85);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5);
+    transform: translateY(-2px) scale(1.1);
+}
+
+/* Remove Button (Liked Tab Only) */
+.remove-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(239, 68, 68, 0.7);
+    color: white;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.remove-button:hover {
+    background: rgba(239, 68, 68, 0.9);
+    border-color: rgba(239, 68, 68, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+}
+
+.remove-button:active {
+    transform: translateY(0);
 }
 
 /* =========================
@@ -532,13 +706,30 @@
         font-size: 1.3rem;
     }
 
-    .gallery-title {
-        font-size: 2rem;
+    .challenges-header h3 {
+        font-size: 1rem;
+    }
+
+    .challenge-name {
+        font-size: 0.85rem;
+    }
+
+    .challenge-timer {
+        font-size: 0.65rem;
+    }
+
+    .challenge-status,
+    .challenge-reward {
+        font-size: 0.7rem;
     }
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+
+    .card-slide {
+        height: 350px;
     }
 
     .nav-button {
@@ -552,11 +743,19 @@
         width: 45px;
         height: 45px;
     }
+
+    .card-overlay h4 {
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 480px) {
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+
+    .card-slide {
+        height: 400px;
     }
 
     .profile-picture {
@@ -569,5 +768,15 @@
         right: 1rem;
         width: 42px;
         height: 42px;
+    }
+
+    .challenge-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .challenge-timer {
+        font-size: 0.6rem;
     }
 }

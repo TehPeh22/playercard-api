@@ -49,33 +49,37 @@ const Navbar = () => {
                 <span></span>
             </div>
 
-            <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-                {/* Remove home in nav when not authenticated */}
-                {
-                    !isAuthenticated && (
-                        <li onClick={closeMenu}><Link to='/'>Home</Link></li>
-                    )
-                }
+            {/* Right Side: Nav Links + Login/Logout */}
+            <div className={`nav-right ${isMenuOpen ? 'active' : ''}`}>
+                <ul className='nav-menu'>
+                    {/* Remove home in nav when not authenticated */}
+                    {
+                        !isAuthenticated && (
+                            <li onClick={closeMenu}><Link to='/'>Home</Link></li>
+                        )
+                    }
 
-                {
-                    isAuthenticated && (
-                        <>
-                            <li onClick={closeMenu}><Link to='/gallery'>Gallery</Link></li>
-                            <li onClick={closeMenu}><Link to='/payment'>Payment</Link></li>
-                        </>
-                    )
-                }
-                <li onClick={closeMenu}>Support</li>
-            </ul>
+                    {
+                        isAuthenticated && (
+                            <>
+                                <li onClick={closeMenu}><Link to='/dashboard'>Dashboard</Link></li>
+                                <li onClick={closeMenu}><Link to='/game'>Game</Link></li>
+                                <li onClick={closeMenu}><Link to='/payment'>Payment</Link></li>
+                            </>
+                        )
+                    }
+                    <li onClick={closeMenu}>Support</li>
+                </ul>
 
-            <div className='nav-login'>
-                {
-                    isAuthenticated ? (
-                        <button onClick={handleLogout}>Logout</button>
-                    ) : (
-                        <Link to='/login' onClick={closeMenu}><button>Login</button></Link>
-                    )
-                }
+                <div className='nav-login'>
+                    {
+                        isAuthenticated ? (
+                            <button onClick={handleLogout}>Logout</button>
+                        ) : (
+                            <Link to='/login' onClick={closeMenu}><button>Login</button></Link>
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,314 @@
+/* Game Page */
+.game-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #fff;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(147, 51, 234, 0.15), transparent 60%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Header */
+.game-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.game-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #9333ea 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    color: rgba(203, 213, 225, 0.8);
+}
+
+/* Input Section */
+.game-input-section {
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.game-input {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    background: rgba(15, 23, 42, 0.7);
+    border: 2px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.game-input:focus {
+    outline: none;
+    border-color: rgba(147, 51, 234, 0.8);
+    background: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+}
+
+.game-input::placeholder {
+    color: rgba(203, 213, 225, 0.5);
+}
+
+/* Buttons */
+.game-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.encrypt-button,
+.reset-button {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.encrypt-button {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+.encrypt-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+    background: linear-gradient(135deg, rgba(147, 51, 234, 1) 0%, rgba(168, 85, 247, 1) 100%);
+}
+
+.reset-button {
+    background: rgba(239, 68, 68, 0.7);
+    color: white;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.reset-button:hover {
+    background: rgba(239, 68, 68, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+}
+
+/* Results */
+.game-results {
+    position: relative;
+    z-index: 1;
+}
+
+.results-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #a78bfa;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* Custom Scrollbar */
+.results-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.results-grid::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 10px;
+}
+
+.results-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #9333ea 0%, #a78bfa 100%);
+    border-radius: 10px;
+}
+
+.results-grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+}
+
+.result-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.15), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.result-card:hover {
+    border-color: rgba(147, 51, 234, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+}
+
+.result-card:hover::before {
+    opacity: 1;
+}
+
+.result-key {
+    color: #a78bfa;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.result-text {
+    color: white;
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    position: relative;
+    z-index: 1;
+    line-height: 1.5;
+}
+
+/* Instructions */
+.game-instructions {
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.game-instructions h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #a78bfa;
+}
+
+.game-instructions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.game-instructions li {
+    font-size: 1.1rem;
+    color: rgba(203, 213, 225, 0.9);
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.game-instructions li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    color: #a78bfa;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .game-subtitle {
+        font-size: 1rem;
+    }
+
+    .game-buttons {
+        flex-direction: column;
+    }
+
+    .encrypt-button,
+    .reset-button {
+        width: 100%;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+        max-height: 500px;
+    }
+
+    .game-instructions li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-page {
+        padding: 1rem;
+    }
+
+    .game-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .game-title {
+        font-size: 1.8rem;
+    }
+
+    .game-input {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .result-card {
+        padding: 1rem;
+    }
+
+    .result-text {
+        font-size: 1rem;
+    }
+}
