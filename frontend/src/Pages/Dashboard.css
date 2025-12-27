@@ -368,12 +368,30 @@
 
 /* Navigation Tabs */
 .gallery-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 3rem;
     position: relative;
     z-index: 1;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto; */
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
 }
 
 .nav-button {
@@ -401,6 +419,35 @@
     border-color: rgba(147, 51, 234, 0.5);
     box-shadow: 0 4px 20px rgba(147, 51, 234, 0.4);
 }
+
+/* Today's Pick Reset Timer */
+.picks-reset-timer {
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem; */
+
+    justify-self: end;
+    text-align: right;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reset-label {
+    color: rgba(203, 213, 225, 0.6);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* .reset-time {
+    color: #a78bfa;
+    font-size: 1.2rem;
+    font-weight: 700;
+} */
 
 /* Gallery Grid */
 .gallery-grid {
@@ -737,6 +784,28 @@
         font-size: 0.9rem;
     }
 
+    .gallery-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+
+    .nav-buttons {
+        justify-content: center;
+    }
+
+    .picks-reset-timer {
+        align-items: center;
+    }
+
+    .reset-label {
+        font-size: 0.7rem;
+    }
+
+    /* .reset-time {
+        font-size: 1rem;
+    } */
+
     .gallery-back-to-top {
         bottom: 1.5rem;
         right: 1.5rem;
@@ -761,6 +830,17 @@
     .profile-picture {
         width: 100px;
         height: 100px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-button {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 
     .gallery-back-to-top {

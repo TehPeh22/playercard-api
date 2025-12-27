@@ -63,8 +63,7 @@ const Navbar = () => {
                         isAuthenticated && (
                             <>
                                 <li onClick={closeMenu}><Link to='/dashboard'>Dashboard</Link></li>
-                                <li onClick={closeMenu}><Link to='/game'>Game</Link></li>
-                                <li onClick={closeMenu}><Link to='/payment'>Payment</Link></li>
+                                <li onClick={closeMenu}><Link to='/challenges'>Challenges</Link></li>
                             </>
                         )
                     }

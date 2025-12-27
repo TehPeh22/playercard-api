@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import './Dashboard.css';
 
-const Dashboard = () => {
+const Gallery = () => {
     const [cards, setCards] = useState([]);
     const [fadeIn, setFadeIn] = useState(false);
     const [activeTab, setActiveTab] = useState('today');
@@ -252,7 +252,7 @@ const Dashboard = () => {
                     {/* Weekly Challenges */}
                     <div className="challenges-section">
                         <div className="challenges-header">
-                            <h3>Challenges</h3>
+                            <h3>Weekly Challenges</h3>
                         </div>
                         
                         <div className="challenges-list">
@@ -323,21 +323,26 @@ const Dashboard = () => {
                 <div className="gallery-content">
                     <div className={`gallery-container ${fadeIn ? 'fade-in' : ''}`}>
                         <div className="gallery-nav">
-                            <button
-                                className={`nav-button ${activeTab === 'today' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('today')}>
-                                Today's Pick
-                            </button>
-                            <button
-                                className={`nav-button ${activeTab === 'collection' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('collection')}>
-                                My Collection
-                            </button>
-                            <button
-                                className={`nav-button ${activeTab === 'wishlist' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('wishlist')}>
-                                Wishlist
-                            </button>
+                            <div className="nav-buttons">
+                                <button
+                                    className={`nav-button ${activeTab === 'today' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('today')}>
+                                    Today's Pick
+                                </button>
+                                <button
+                                    className={`nav-button ${activeTab === 'collection' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('collection')}>
+                                    My Collection
+                                </button>
+                                <button
+                                    className={`nav-button ${activeTab === 'wishlist' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('wishlist')}>
+                                    Wishlist
+                                </button>
+                            </div>
+                            <div className="picks-reset-timer">
+                                <span className="reset-label">Today's Pick Resets In {timeUntilReset.daily}</span>
+                            </div>
                         </div>
 
                         {displayedCards.length === 0 && (activeTab === 'collection' || activeTab === 'wishlist') ? (
@@ -416,4 +421,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Gallery;

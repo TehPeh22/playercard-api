@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Game.css';
+import './Challenges.css';
 
-const Game = () => {
+const Challenges = () => {
     const [userInput, setUserInput] = useState('');
     const [results, setResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
@@ -114,4 +114,4 @@ const Game = () => {
     );
 };
 
-export default Game;
+export default Challenges;
