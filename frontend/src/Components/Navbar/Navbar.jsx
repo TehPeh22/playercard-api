@@ -67,7 +67,6 @@ const Navbar = () => {
                             </>
                         )
                     }
-                    <li onClick={closeMenu}>Support</li>
                 </ul>
 
                 <div className='nav-login'>

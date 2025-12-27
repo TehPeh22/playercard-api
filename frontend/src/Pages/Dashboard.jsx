@@ -237,16 +237,6 @@ const Gallery = () => {
                                 <span className="stat-value">2,000</span>
                             </div>
                         </div>
-
-                        <div className="stat-card">
-                            <div className="stat-icon">⭐</div>
-                            <div className="stat-info">
-                                <span className="stat-label">Collection</span>
-                                <span className="stat-value">
-                                    {cards.length > 0 ? Math.round((ownedCards.length / cards.length) * 100) : 0}%
-                                </span>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Weekly Challenges */}

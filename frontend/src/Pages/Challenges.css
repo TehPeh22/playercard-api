@@ -29,7 +29,119 @@
     pointer-events: none;
 }
 
-/* Header */
+/* Landing Page */
+.challenge-landing-container {
+    max-width: 700px;
+}
+
+.challenge-landing-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.challenge-landing-title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.objective-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    margin-bottom: 3rem;
+}
+
+.objective-title {
+    font-size: 1.8rem;
+    color: #a78bfa;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.objective-text {
+    font-size: 1.3rem;
+    color: rgba(203, 213, 225, 0.9);
+    margin-bottom: 2rem;
+}
+
+.points-info {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.point-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.points-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+/* Difficulty Badges */
+.difficulty-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.difficulty-badge.easy {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(74, 222, 128, 0.8));
+    color: white;
+}
+
+.difficulty-badge.hard {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.8), rgba(248, 113, 113, 0.8));
+    color: white;
+}
+
+/* Play Button */
+.play-button {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(147, 51, 234, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.play-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(147, 51, 234, 0.7);
+    background: linear-gradient(135deg, rgba(147, 51, 234, 1) 0%, rgba(168, 85, 247, 1) 100%);
+}
+
+.play-icon {
+    font-size: 1.3rem;
+}
+
+.game-info {
+    margin-top: 2rem;
+    color: rgba(203, 213, 225, 0.7);
+    font-size: 1.1rem;
+}
+
+/* Game Header */
 .game-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -39,7 +151,7 @@
 
 .game-title {
     font-size: 3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #9333ea 0%, #a78bfa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -47,242 +159,346 @@
     font-weight: 700;
 }
 
-.game-subtitle {
-    font-size: 1.2rem;
+.score-board {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.score-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.score-label {
+    font-size: 1.1rem;
     color: rgba(203, 213, 225, 0.8);
 }
 
-/* Input Section */
-.game-input-section {
+.score-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+/* Challenges Grid */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
     margin-bottom: 3rem;
     position: relative;
     z-index: 1;
 }
 
-.game-input {
+/* Challenge Cards */
+.challenge-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 2px solid rgba(148, 163, 184, 0.35);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.1), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(147, 51, 234, 0.3);
+}
+
+.challenge-card:hover::before {
+    opacity: 1;
+}
+
+.challenge-card.easy {
+    border-color: rgba(34, 197, 94, 0.4);
+}
+
+.challenge-card.hard {
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.challenge-card.solved {
+    border-color: rgba(147, 51, 234, 0.6);
+    background: rgba(147, 51, 234, 0.1);
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.challenge-points {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+/* Encrypted Message */
+.encrypted-message-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.encrypted-label {
+    font-size: 0.85rem;
+    color: #a78bfa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.encrypted-text {
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: #fbbf24;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+/* Answer Section */
+.answer-section {
+    position: relative;
+    z-index: 1;
+}
+
+.answer-input {
     width: 100%;
-    padding: 1.2rem 1.5rem;
+    padding: 1rem 1.25rem;
     background: rgba(15, 23, 42, 0.7);
     border: 2px solid rgba(148, 163, 184, 0.35);
-    border-radius: 12px;
+    border-radius: 10px;
     color: white;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
 
-.game-input:focus {
+.answer-input:focus {
     outline: none;
     border-color: rgba(147, 51, 234, 0.8);
     background: rgba(15, 23, 42, 0.9);
     box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
 }
 
-.game-input::placeholder {
+.answer-input::placeholder {
     color: rgba(203, 213, 225, 0.5);
 }
 
-/* Buttons */
-.game-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.encrypt-button,
-.reset-button {
-    padding: 1rem 2.5rem;
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.9), rgba(168, 85, 247, 0.9));
+    color: white;
     border: none;
-    border-radius: 12px;
-    font-weight: 700;
+    border-radius: 10px;
     font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.encrypt-button {
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
-}
-
-.encrypt-button:hover {
+.submit-button:hover {
+    background: linear-gradient(135deg, rgba(147, 51, 234, 1), rgba(168, 85, 247, 1));
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
-    background: linear-gradient(135deg, rgba(147, 51, 234, 1) 0%, rgba(168, 85, 247, 1) 100%);
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.5);
 }
 
-.reset-button {
+/* Feedback */
+.feedback {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.feedback.success {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #4ade80;
+}
+
+.feedback.error {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #f87171;
+}
+
+/* Solved Section */
+.solved-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(147, 51, 234, 0.15);
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.solved-icon {
+    font-size: 2.5rem;
+    color: #4ade80;
+    flex-shrink: 0;
+}
+
+.solved-message {
+    flex: 1;
+}
+
+.solved-message strong {
+    display: block;
+    color: #4ade80;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.original-message {
+    color: rgba(203, 213, 225, 0.9);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* Victory Section */
+.victory-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(168, 85, 247, 0.2));
+    border-radius: 16px;
+    border: 2px solid rgba(147, 51, 234, 0.5);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.victory-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #a78bfa;
+}
+
+.victory-message {
+    font-size: 1.3rem;
+    color: rgba(203, 213, 225, 0.9);
+    margin-bottom: 1rem;
+}
+
+.final-score {
+    font-size: 1.5rem;
+    color: rgba(203, 213, 225, 0.8);
+}
+
+.final-score span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+/* Game Actions */
+.game-actions {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.restart-button {
+    padding: 1rem 3rem;
     background: rgba(239, 68, 68, 0.7);
     color: white;
     border: 1px solid rgba(239, 68, 68, 0.5);
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.reset-button:hover {
+.restart-button:hover {
     background: rgba(239, 68, 68, 0.9);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
 }
 
-/* Results */
-.game-results {
-    position: relative;
-    z-index: 1;
-}
-
-.results-title {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    color: #a78bfa;
-}
-
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-height: 600px;
-    overflow-y: auto;
-    padding-right: 1rem;
-}
-
-/* Custom Scrollbar */
-.results-grid::-webkit-scrollbar {
-    width: 8px;
-}
-
-.results-grid::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.5);
-    border-radius: 10px;
-}
-
-.results-grid::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #9333ea 0%, #a78bfa 100%);
-    border-radius: 10px;
-}
-
-.results-grid::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
-}
-
-.result-card {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.result-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top left, rgba(147, 51, 234, 0.15), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.result-card:hover {
-    border-color: rgba(147, 51, 234, 0.6);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
-}
-
-.result-card:hover::before {
-    opacity: 1;
-}
-
-.result-key {
-    color: #a78bfa;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.75rem;
-    position: relative;
-    z-index: 1;
-}
-
-.result-text {
-    color: white;
-    font-size: 1.1rem;
-    word-wrap: break-word;
-    position: relative;
-    z-index: 1;
-    line-height: 1.5;
-}
-
-/* Instructions */
-.game-instructions {
-    text-align: center;
-    padding: 3rem 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-.game-instructions h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: #a78bfa;
-}
-
-.game-instructions ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.game-instructions li {
-    font-size: 1.1rem;
-    color: rgba(203, 213, 225, 0.9);
-    margin-bottom: 1rem;
-    padding-left: 2rem;
-    position: relative;
-}
-
-.game-instructions li::before {
-    content: "◆";
-    position: absolute;
-    left: 0;
-    color: #a78bfa;
-    font-size: 0.9rem;
-}
-
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .game-container {
         padding: 2rem 1.5rem;
     }
 
-    .game-title {
+    .game-title,
+    .challenge-landing-title {
         font-size: 2rem;
     }
 
-    .game-subtitle {
-        font-size: 1rem;
+    .objective-box {
+        padding: 2rem 1.5rem;
     }
 
-    .game-buttons {
+    .points-info {
         flex-direction: column;
+        gap: 1rem;
     }
 
-    .encrypt-button,
-    .reset-button {
-        width: 100%;
+    .play-button {
+        padding: 1.2rem 3rem;
+        font-size: 1.2rem;
     }
 
-    .results-grid {
+    .score-board {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .challenges-grid {
         grid-template-columns: 1fr;
-        max-height: 500px;
+        gap: 1.5rem;
     }
 
-    .game-instructions li {
+    .challenge-card {
+        padding: 1.5rem;
+    }
+
+    .encrypted-text {
         font-size: 1rem;
+    }
+
+    .victory-title {
+        font-size: 2rem;
     }
 }
 
@@ -295,20 +511,49 @@
         padding: 1.5rem 1rem;
     }
 
+    .challenge-landing-title {
+        font-size: 1.8rem;
+    }
+
+    .objective-title {
+        font-size: 1.4rem;
+    }
+
+    .objective-text {
+        font-size: 1.1rem;
+    }
+
+    .play-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
     .game-title {
         font-size: 1.8rem;
     }
 
-    .game-input {
-        font-size: 1rem;
-        padding: 1rem;
+    .challenge-card {
+        padding: 1.25rem;
     }
 
-    .result-card {
-        padding: 1rem;
+    .encrypted-text {
+        font-size: 0.95rem;
     }
 
-    .result-text {
-        font-size: 1rem;
+    .answer-input {
+        font-size: 0.95rem;
+        padding: 0.875rem 1rem;
+    }
+
+    .victory-title {
+        font-size: 1.6rem;
+    }
+
+    .final-score {
+        font-size: 1.2rem;
+    }
+
+    .final-score span {
+        font-size: 1.6rem;
     }
 }
